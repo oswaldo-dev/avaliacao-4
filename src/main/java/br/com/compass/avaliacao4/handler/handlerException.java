@@ -53,12 +53,6 @@ public class handlerException extends ResponseEntityExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new MensagemErro(DATA_INVALIDA));
     }
 
-    @ExceptionHandler(value = {Exception.class})
-    protected ResponseEntity<MensagemErro> handlerExceptionGlobal(Exception exception) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new MensagemErro(ERRO_INTERNO_NO_SERVIDOR));
-    }
-
-
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
                                                                   HttpHeaders headers, HttpStatus status, WebRequest request) {
         List<String> validationList = ex.getBindingResult().getFieldErrors().stream().map(fieldError ->
