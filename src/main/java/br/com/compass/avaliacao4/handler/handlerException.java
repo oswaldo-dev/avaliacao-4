@@ -16,21 +16,21 @@ import java.util.stream.Collectors;
 @ControllerAdvice
 public class handlerException extends ResponseEntityExceptionHandler {
 
-    private static final String STATE_NOT_FOUND = "Objeto não encontrado.";
-    private static final String ERRO_INTERNO_NO_SERVIDOR = "Erro interno no servidor.";
+    private static final String PARTIDO_NOT_FOUND = "Partido não encontrado.";
     private static final String IDEOLOGIA_INVALIDA = "Ideologia inválida.";
     private static final String CARGO_INVALIDO = "Cargo inválido.";
     private static final String SEXO_INVALIDO = "Sexo inválido.";
     private static final String DATA_INVALIDA = "Data inválida.";
+    private static final String ASSOCIADO_NAO_ENCONTRADO = "Associado não encontrado";
 
     @ExceptionHandler(value = PartidoNotFoundException.class)
     protected ResponseEntity<MensagemErro> handlerPartidoNotFound(PartidoNotFoundException exception) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new MensagemErro(STATE_NOT_FOUND));
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new MensagemErro(PARTIDO_NOT_FOUND));
     }
 
     @ExceptionHandler(value = AssociadoNotFoundException.class)
     protected ResponseEntity<MensagemErro> handlerAssociadoNotFound(AssociadoNotFoundException exception) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new MensagemErro(STATE_NOT_FOUND));
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new MensagemErro(ASSOCIADO_NAO_ENCONTRADO));
     }
 
     @ExceptionHandler(value = SexoNotFoundException.class)

@@ -19,9 +19,7 @@ public class Partido {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(unique=true)
     private String nome;
-    @Column(unique=true)
     private String sigla;
     private String Ideologia;
     private LocalDate dataFundacao;

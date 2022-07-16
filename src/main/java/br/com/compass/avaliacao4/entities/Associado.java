@@ -21,6 +21,6 @@ public class Associado {
     private String cargoPolitico;
     private LocalDate dataNascimento;
     private String sexo;
-    @ManyToOne(optional = true, cascade = CascadeType.REFRESH)
+    @ManyToOne(optional = true, cascade = CascadeType.MERGE)
     private Partido partido;
 }

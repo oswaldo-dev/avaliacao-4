@@ -59,6 +59,8 @@ public class PartidoService {
 
     public void deletar(Long id) {
         Partido entidade = partidoRepository.findById(id).orElseThrow(PartidoNotFoundException::new);
+        List<Associado> associados = associadoRepository.findByPartido_Id(id);
+        associados.forEach(associado -> associado.setPartido(null));
         partidoRepository.delete(entidade);
     }
 
