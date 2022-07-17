@@ -5,7 +5,6 @@ import br.com.compass.avaliacao4.dto.request.RequestVinculoDto;
 import br.com.compass.avaliacao4.entities.Associado;
 import br.com.compass.avaliacao4.entities.Partido;
 import br.com.compass.avaliacao4.exceptions.CargoPoliticoNotFoundException;
-import br.com.compass.avaliacao4.exceptions.IdeologiaNotFoundException;
 import br.com.compass.avaliacao4.exceptions.SexoNotFoundException;
 import br.com.compass.avaliacao4.repository.AssociadoRepository;
 import br.com.compass.avaliacao4.repository.PartidoRepository;
@@ -22,8 +21,6 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 @ActiveProfiles("test")

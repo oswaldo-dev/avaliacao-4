@@ -1,7 +1,6 @@
 package br.com.compass.avaliacao4.util;
 
 import br.com.compass.avaliacao4.exceptions.DataInvaledException;
-import br.com.compass.avaliacao4.exceptions.IdeologiaNotFoundException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -9,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ValidaDataTest {
 
