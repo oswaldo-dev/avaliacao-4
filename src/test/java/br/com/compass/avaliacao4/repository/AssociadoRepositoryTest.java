@@ -3,6 +3,7 @@ package br.com.compass.avaliacao4.repository;
 import br.com.compass.avaliacao4.entities.Associado;
 import br.com.compass.avaliacao4.entities.Partido;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,7 @@ class AssociadoRepositoryTest {
     private TestEntityManager em;
 
     @Test
+    @DisplayName("Deveria buscar um associado pelo cargo politico")
     void findWithFilters() {
         Associado associado = Associado.builder().nome("Associado").cargoPolitico("Presidente")
                 .dataNascimento(LocalDate.now()).sexo("Masculino").build();
@@ -42,6 +44,7 @@ class AssociadoRepositoryTest {
     }
 
     @Test
+    @DisplayName("Deveria buscar um associado pelo partido")
     void findByPartido_Id() {
 
         Partido partido = Partido.builder().nome("Partido").dataFundacao(LocalDate.now()).sigla("P").Ideologia("Esquerda").build();

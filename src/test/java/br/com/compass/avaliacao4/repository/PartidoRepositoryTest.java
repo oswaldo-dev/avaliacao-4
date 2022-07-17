@@ -26,6 +26,7 @@ public class PartidoRepositoryTest {
     private TestEntityManager em;
 
     @Test
+    @DisplayName("Deveria buscar um partido pela ideologia.")
     void buscaComFiltro() {
 
         Partido partido = Partido.builder().nome("Partido").Ideologia("Direita").sigla("P").dataFundacao(LocalDate.now()).build();

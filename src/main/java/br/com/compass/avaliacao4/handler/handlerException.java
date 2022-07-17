@@ -16,12 +16,12 @@ import java.util.stream.Collectors;
 @ControllerAdvice
 public class handlerException extends ResponseEntityExceptionHandler {
 
-    private static final String PARTIDO_NOT_FOUND = "Partido não encontrado.";
-    private static final String IDEOLOGIA_INVALIDA = "Ideologia inválida.";
-    private static final String CARGO_INVALIDO = "Cargo inválido.";
-    private static final String SEXO_INVALIDO = "Sexo inválido.";
-    private static final String DATA_INVALIDA = "Data inválida.";
-    private static final String ASSOCIADO_NAO_ENCONTRADO = "Associado não encontrado";
+    private static final String PARTIDO_NOT_FOUND = "Partido nao encontrado.";
+    private static final String IDEOLOGIA_INVALIDA = "Ideologia invalida.";
+    private static final String CARGO_INVALIDO = "Cargo invalido.";
+    private static final String SEXO_INVALIDO = "Sexo invalido.";
+    private static final String DATA_INVALIDA = "Data invalida.";
+    private static final String ASSOCIADO_NAO_ENCONTRADO = "Associado nao encontrado";
 
     @ExceptionHandler(value = PartidoNotFoundException.class)
     protected ResponseEntity<MensagemErro> handlerPartidoNotFound(PartidoNotFoundException exception) {
