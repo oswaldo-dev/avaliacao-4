@@ -7,10 +7,7 @@ import br.com.compass.avaliacao4.entities.Associado;
 import br.com.compass.avaliacao4.entities.Partido;
 import br.com.compass.avaliacao4.enums.CargoPolitico;
 import br.com.compass.avaliacao4.enums.Sexo;
-import br.com.compass.avaliacao4.exceptions.AssociadoNotFoundException;
-import br.com.compass.avaliacao4.exceptions.CargoPoliticoNotFoundException;
-import br.com.compass.avaliacao4.exceptions.PartidoNotFoundException;
-import br.com.compass.avaliacao4.exceptions.SexoNotFoundException;
+import br.com.compass.avaliacao4.exceptions.*;
 import br.com.compass.avaliacao4.repository.AssociadoRepository;
 import br.com.compass.avaliacao4.repository.PartidoRepository;
 import org.modelmapper.ModelMapper;
@@ -19,6 +16,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -37,6 +35,16 @@ public class AssociadoService {
     }
 
     public List<ResponseAssociadoDto> buscar(String cargo, String sort) {
+        if (!Objects.equals(cargo, "Presidente")
+                && !Objects.equals(cargo, "Vereador")
+                && !Objects.equals(cargo, "Prefeito")
+                && !Objects.equals(cargo, "Deputado-Federal")
+                && !Objects.equals(cargo, "Deputado-Estadual")
+                && !Objects.equals(cargo, "Senado")
+                && !Objects.equals(cargo, "Governador")
+                && !Objects.equals(cargo, "Nenhum")) {
+            throw new CargoPoliticoNotFoundException();
+        }
         List<Associado> associados = associadoRepository.findWithFilters(cargo, Sort.by(Sort.Direction.ASC, sort));
         return associados.stream().map(associado -> modelMapper.map(associado, ResponseAssociadoDto.class))
                 .collect(Collectors.toList());

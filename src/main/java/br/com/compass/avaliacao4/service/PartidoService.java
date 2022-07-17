@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,6 +34,9 @@ public class PartidoService {
     }
 
     public List<ResponsePartidoDto> buscar(String ideologia) {
+        if (!Objects.equals(ideologia, "Centro") && !Objects.equals(ideologia, "Direita") && !Objects.equals(ideologia, "Esquerda")) {
+            throw new IdeologiaNotFoundException();
+        }
         List<Partido> partidos = partidoRepository.findWithFilters(ideologia);
         return partidos.stream().map(partido -> modelMapper.map(partido, ResponsePartidoDto.class))
                 .collect(Collectors.toList());
@@ -73,7 +77,11 @@ public class PartidoService {
     }
 
     public List<ResponseAssociadoDto> buscarAssociados(Long id) {
+        if (!partidoRepository.existsById(id)) {
+            throw new PartidoNotFoundException();
+        }
         List<Associado> associados = associadoRepository.findByPartido_Id(id);
+
         return associados.stream().map(associado -> modelMapper.map(associado, ResponseAssociadoDto.class))
                 .collect(Collectors.toList());
     }
