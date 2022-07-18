@@ -37,7 +37,6 @@ public class AssociadoService {
     }
 
     public List<ResponseAssociadoDto> buscar(String cargo, String sort) {
-        validacaoDeCargoPolitico(cargo);
         List<Associado> associados = associadoRepository.findWithFilters(cargo, Sort.by(Sort.Direction.ASC, sort));
         return associados.stream().map(associado -> modelMapper.map(associado, ResponseAssociadoDto.class))
                 .collect(Collectors.toList());

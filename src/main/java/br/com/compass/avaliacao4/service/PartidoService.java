@@ -33,7 +33,6 @@ public class PartidoService {
     }
 
     public List<ResponsePartidoDto> buscar(String ideologia) {
-        validacaoDeIdeologia(ideologia);
         List<Partido> partidos = partidoRepository.findWithFilters(ideologia);
         return partidos.stream().map(partido -> modelMapper.map(partido, ResponsePartidoDto.class))
                 .collect(Collectors.toList());
